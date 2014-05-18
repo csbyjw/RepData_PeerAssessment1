@@ -194,7 +194,7 @@ setwd(&quot;~/Documents/Coursera/Data Science/code&quot;)
 activity &lt;- read.csv(&quot;activity.csv&quot;, header = TRUE, stringsAsFactors = FALSE)
 </code></pre>
 
-<h2>Reshape the data</h2>
+<h2>Reshaping the data</h2>
 
 <p>Agg the data by day and by interval for later computations
 then store the result in .bydate and .byinterval frames. Calc the mean, median, 
@@ -262,10 +262,9 @@ median_steps &lt;- median(activity.byday$steps, na.rm = TRUE)
 <pre><code class="r">missing &lt;- sum(is.na(activity$steps))
 </code></pre>
 
-<p>There are 2304 rows with missing data.</p>
-
-<p>Copying the data structure to activity.filled and replace NA steps values
-with the mean for the interval (11/30 is missing, so by date is a problem)</p>
+<p>There are 2304 rows with missing data.
+Data related to: 11/30 is missing, causing a problem when plotting by date.
+Replacing missing values with avg steps for this date</p>
 
 <pre><code class="r">activity.filled &lt;- activity
 for (i in 1:nrow(activity.filled)) {
@@ -298,7 +297,7 @@ median_steps_f &lt;- median(activity.filled.byday$steps, na.rm = TRUE)
 <p>The mean number of steps per day is 10766 and
 the median is 10766. </p>
 
-<h3>Result: The values are slightly skewed due to the imputation.</h3>
+<h3>Result: The values are skewed due to the imputation</h3>
 
 <h2>Are the activity patterns different between weekends and weekdays?</h2>
 

@@ -17,7 +17,7 @@ activity <- read.csv("activity.csv", header = TRUE, stringsAsFactors = FALSE)
 ```
 
 
-## Reshape the data
+## Reshaping the data
 
 Agg the data by day and by interval for later computations
 then store the result in .bydate and .byinterval frames. Calc the mean, median, 
@@ -103,9 +103,8 @@ missing <- sum(is.na(activity$steps))
 
 
 There are 2304 rows with missing data.
-
-Copying the data structure to activity.filled and replace NA steps values
-with the mean for the interval (11/30 is missing, so by date is a problem)
+Data related to: 11/30 is missing, causing a problem when plotting by date.
+Replacing missing values with avg steps for this date
 
 ```r
 activity.filled <- activity
@@ -145,7 +144,7 @@ median_steps_f <- median(activity.filled.byday$steps, na.rm = TRUE)
 The mean number of steps per day is 10766 and
 the median is 10766. 
 
-### Result: The values are slightly skewed due to the imputation.
+### Result: The values are skewed due to the imputation
 
 ## Are the activity patterns different between weekends and weekdays?
 
